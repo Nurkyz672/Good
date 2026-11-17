@@ -4,13 +4,13 @@ from datetime import date, datetime
 from decimal import Decimal
 from .models import StatusChoices, OrderStatus
 
-
 class UserProfileRegisterSchema(BaseModel):
     first_name: str
     last_name: str
     username: str
     email: EmailStr
     password: str
+    status: StatusChoices
 
 
 class UserProfileLoginSchema(BaseModel):
@@ -24,6 +24,7 @@ class UserProfileUpdateSchema(BaseModel):
     username: Optional[str] = None
     email: Optional[EmailStr] = None
     password: Optional[str] = None
+    status: Optional[StatusChoices] = None
 
 
 class UserProfileOutSchema(BaseModel):
@@ -34,6 +35,7 @@ class UserProfileOutSchema(BaseModel):
     last_name: str
     username: str
     email: str
+    status: StatusChoices
     created_date: date
 
 
@@ -43,6 +45,7 @@ class UserProfileInputSchema(BaseModel):
     username: str
     email: EmailStr
     password: str
+    status: StatusChoices
 
 
 class CurrentUserSchema(BaseModel):
@@ -60,7 +63,7 @@ class UserProfileMeSchema(BaseModel):
     last_name: str
     username: str
     email: str
-
+    status: StatusChoices
 
 class CategoryInputSchema(BaseModel):
     category_name: str
